@@ -20,12 +20,11 @@ public class Lotto2 {
         for (int i = 0; i < lottoResult.length; i++) {
             for (int j = 0; j < lottoResult[i].length; j++) {
                 lottoResult[i][j] = (random.nextInt(49) + 1);
-                while (contains(lottoResult,i,j))
+                while (contains(lottoResult[i], j))
                     lottoResult[i][j] = (random.nextInt(49) + 1);
             }
+            Arrays.sort(lottoResult[i]);
         }
-
-
 
         for (int i = 0; i < lottoResult.length; i++) {
             for (int j = 0; j < lottoResult[i].length; j++) {
@@ -35,17 +34,17 @@ public class Lotto2 {
         }
     }
 
-    private static boolean contains(int[][] lottoResult, int i, int j) {
-        for (int k = 0; k < i ; k++) {
-            for (int l = 0; l < j ; l++) {
-                if (lottoResult[k][l]==lottoResult[i][j]){
-                    return true;
-                }
+    private static boolean contains(int[] lottoResult, int j) {
+        for (int i = 0; i < j; i++) {
+            if (lottoResult[j] == lottoResult[i]) {
+                return true;
             }
         }
-        return  false;
+        return false;
     }
 }
+
+
 
 
 
