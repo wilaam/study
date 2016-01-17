@@ -22,13 +22,30 @@ public class Lotto2 {
         int[][] lottoResult = drawALots(amount);
 
         //todo: extract printing to new method
+        printResult(lottoResult);
+        printToFile(lottoResult);
+    }
+
+    private static void printResult(int[][] lottoResult) throws FileNotFoundException {
         for (int i = 0; i < lottoResult.length; i++) {
             for (int j = 0; j < lottoResult[i].length; j++) {
                 System.out.print(lottoResult[i][j] + ",");
             }
+            System.out.println("");
         }
         PrintStream out = new PrintStream("./test.txt");
         out.println("hello");
+        out.flush();
+    }
+
+    private static void printToFile(int[][] lottoResult) throws FileNotFoundException{
+        PrintStream out = new PrintStream("./result.txt");
+        for (int i = 0; i <lottoResult.length ; i++) {
+            for (int j = 0; j <lottoResult[i].length ; j++) {
+                out.print(lottoResult[i][j] + ",");
+            }
+            out.println();
+        }
         out.flush();
     }
 
