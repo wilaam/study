@@ -22,8 +22,10 @@ public class Lotto2 {
         int[][] lottoResult = drawALots(amount);
 
         //todo: extract printing to new method
-        printResult(lottoResult);
-        printToFile(lottoResult);
+        // printResult(lottoResult);
+        // printToFile(lottoResult);
+        //printAll(lottoResult);
+        printAll(lottoResult, false);
     }
 
     private static void printResult(int[][] lottoResult) throws FileNotFoundException {
@@ -38,12 +40,27 @@ public class Lotto2 {
         out.flush();
     }
 
-    private static void printToFile(int[][] lottoResult) throws FileNotFoundException{
+    private static void printToFile(int[][] lottoResult) throws FileNotFoundException {
         PrintStream out = new PrintStream("./result.txt");
-        for (int i = 0; i <lottoResult.length ; i++) {
-            for (int j = 0; j <lottoResult[i].length ; j++) {
+        for (int i = 0; i < lottoResult.length; i++) {
+            for (int j = 0; j < lottoResult[i].length; j++) {
                 out.print(lottoResult[i][j] + ",");
             }
+            out.println();
+        }
+        out.flush();
+    }
+
+
+    private static void printAll(int[][] lottoResult, boolean file) throws FileNotFoundException {
+        PrintStream out = new PrintStream("./result2.txt");
+        for (int i = 0; i < lottoResult.length; i++) {
+            for (int j = 0; j < lottoResult[i].length; j++) {
+                System.out.print(lottoResult[i][j] + ",");
+                if (file == true)
+                    out.print(lottoResult[i][j] + ",");
+            }
+            System.out.println("");
             out.println();
         }
         out.flush();
