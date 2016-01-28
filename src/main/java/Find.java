@@ -11,12 +11,15 @@ public class Find {
         String nameValue = null;
         String containsValue = null;
 
-        if (args.length > 1 && args[1].equals("-name")) {
-            nameValue = args[2];
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].contains("-name")){
+                nameValue=args[i+1];
+            }
+            if (args[i].contains("-contains")){
+                containsValue=args[i+1];
+            }
         }
-        if (args.length > 1 && args[3].equals("-contains")) {
-            containsValue = args[4];
-        }
+
         printFile(currentFile, nameValue, containsValue);
     }
 
@@ -26,7 +29,7 @@ public class Find {
             if (nameValue == null) {
                 System.out.println(file);
             } else {
-                if (file.getName().equals(nameValue) && (containsText(currentFile, containsValue))) {
+                if (file.getName().equals(nameValue) && (containsText(file, containsValue))) {
                     System.out.println(file);
                 }
             }
@@ -37,6 +40,9 @@ public class Find {
     }
 
     private static boolean containsText(File currentFile, String containsValue) throws FileNotFoundException {
+        if(currentFile.isDirectory()) {
+            return false;
+        }
         Scanner scanner = new Scanner(currentFile);
         while (scanner.hasNext()) {
             String textInLine = scanner.nextLine();
