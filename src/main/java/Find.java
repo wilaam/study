@@ -43,6 +43,10 @@ public class Find {
         if(currentFile.isDirectory()) {
             return false;
         }
+
+        if(containsValue==null){
+            return false;
+        }
         Scanner scanner = new Scanner(currentFile);
         while (scanner.hasNext()) {
             String textInLine = scanner.nextLine();
