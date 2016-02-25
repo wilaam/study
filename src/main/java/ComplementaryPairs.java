@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by asus on 2016-02-04.
  */
@@ -13,9 +15,21 @@ public class ComplementaryPairs {
 class Solution6 {
     public int solution (int K, int[] A){
         int result=0;
-        for (int i = 0; i <A.length ; i++) {
-            for (int j = 0; j <A.length ; j++) {
-                if (A[i]+A[j]==K){
+        Arrays.sort(A);
+        for (int i = 0; i <A.length; i++) {
+            //Dla ka?dej liczby próbujemy utworzy? par?
+            int szukaj = Arrays.binarySearch(A, K-A[i]);
+            if (szukaj>0){
+               //Liczymy wszystkie liczby które s? równe K-A[i]
+                result++;
+                // Id? w lewo dopóki A[index] wynosi K-A[i]
+                for (int index = szukaj-1; index>=0 && A[index]==K-A[i]; index--) {
+                    result++;
+                }
+
+                //Id? w [rawo dopóki A[index] wynosi K-A[i]
+
+                for (int index = szukaj+1; index<=0 && A[index]==K-A[i] ; index++) {
                     result++;
                 }
             }
