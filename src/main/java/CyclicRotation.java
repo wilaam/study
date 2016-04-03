@@ -19,7 +19,7 @@ class SolutionCyclicRotation{
                 B[i+K]=A[i];
             }
             if (i + K >= A.length){
-               B[i-A.length+K]=A[i];
+               B[(i+K)%A.length]=A[i];
             }
         }
         for (int i = 0; i < B.length ; i++) {
