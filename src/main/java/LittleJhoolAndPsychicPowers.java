@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-/**
- * Created by asus on 2016-04-05.
- */
+
 public class LittleJhoolAndPsychicPowers {
     public static void main(String[] args) {
         System.out.println("Please add binary number");
