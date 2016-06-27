@@ -6,20 +6,22 @@ import java.util.Scanner;
 public class Acronym2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Scanner scanner2 = new Scanner(System.in);
+
         int amountWord = scanner.nextInt();
 
         HashSet<String> word = new HashSet<String>();
         for (int i = 0; i < amountWord; i++) {
-            String input = scanner2.nextLine();
+            String input = scanner.next();
             word.add(input);
         }
 
         int amountSentence = scanner.nextInt();
         String[] sentence = new String[amountSentence];
-        String text = scanner2.nextLine();
-        sentence=text.split(" ");
-
+        //String text = scanner.nextLine();
+        //sentence=text.split(" ");
+        for (int i = 0; i < amountSentence ; i++) {
+            sentence[i]=scanner.next();
+        }
 
         List<String> result = new ArrayList<String>();
         for (String S: sentence){
