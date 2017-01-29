@@ -31,6 +31,30 @@ public class PrintHackerearth2 {
         }
         System.out.println(countLetter);
 
-    }
+        int help = 0;
+        int res = Integer.MAX_VALUE;
+        l1:
+        for (int i = 0; i < countSentence.size(); i++) {
+            for (int j = 0; j < countLetter.size(); j++) {
 
+                if (countSentence.size() > countLetter.size()) {
+                    help = 1;
+                    break l1;
+                }
+
+                if (!countSentence.keySet().equals(countLetter.keySet())) {
+                    help = 1;
+                    break l1;
+                } else
+                    for (char l : countSentence.keySet()) {
+                        res = Math.min(res, countLetter.get(l) / countLetter.get(l));
+                    }
+            }
+        }
+        if (help == 0) {
+            System.out.println(res);
+        } else {
+            System.out.println(-1);
+        }
+    }
 }
